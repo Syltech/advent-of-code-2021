@@ -1,11 +1,16 @@
-import { readFileSync } from 'fs'
+import { createReadStream } from 'fs';
+import { createInterface } from 'readline';
+export async function parseInput(filePath: string): Promise<string[]> {
+  let output: string[] = [];
+  const fileStream = createReadStream(filePath);
+  const rl = createInterface({
+    input: fileStream,
+    crlfDelay: Infinity
+  })
 
-export function parseInput(filePath: string): string[] {
-  let input: string[] = [];
-  try {
-    input = readFileSync(filePath).toString().split("\n");
-  } catch (e) {
-    console.error(e);
+  for await (const line of rl) {
+    output.push(line);
   }
-  return input;
+
+  return output;
 }

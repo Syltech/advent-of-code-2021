@@ -1,6 +1,5 @@
 import { parseInput } from '../utils';
 
-let input = parseInput('./01/input.txt');
 
 function isIncreasing(a: number, b: number) {
     return a < b;
@@ -16,8 +15,7 @@ function countIncrease(input: string[] | number[]): number {
     return increases;
 }
 
-console.log("PART 1");
-console.log(countIncrease(input));
+
 
 function countIncreaseSliding(input: string[]): number {
     let slidingArray = [];
@@ -31,5 +29,16 @@ function countIncreaseSliding(input: string[]): number {
     return countIncrease(slidingArray);
 }
 
-console.log("PART 2");
-console.log(countIncreaseSliding(input));
+
+
+async function main() {
+    let input = await parseInput('./01/input.txt');
+
+    console.log("PART 1");
+    console.log(countIncrease(input));
+
+    console.log("PART 2");
+    console.log(countIncreaseSliding(input));
+}
+
+main();

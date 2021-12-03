@@ -1,6 +1,5 @@
 import { parseInput } from '../utils';
 
-let input = parseInput('./02/input.txt');
 
 function moveSubmarine(input: string[]): { x: number, y: number } {
     let coordinates = { x: 0, y: 0 }
@@ -16,10 +15,7 @@ function moveSubmarine(input: string[]): { x: number, y: number } {
     return coordinates;
 }
 
-let result = moveSubmarine(input);
 
-console.log("PART 1");
-console.log({ result, answer: result.x * result.y })
 
 
 function moveSubmarine2(input: string[]): { x: number, y: number, aim: number } {
@@ -37,7 +33,20 @@ function moveSubmarine2(input: string[]): { x: number, y: number, aim: number } 
     return coordinates;
 }
 
-let result2 = moveSubmarine2(input);
 
-console.log("PART 2");
-console.log({ result2, answer: result2.x * result2.y })
+
+
+async function main() {
+    let input = await parseInput('./02/input.txt');
+
+    let result = moveSubmarine(input);
+    console.log("PART 1");
+    console.log({ result, answer: result.x * result.y })
+
+    let result2 = moveSubmarine2(input);
+
+    console.log("PART 2");
+    console.log({ result2, answer: result2.x * result2.y })
+}
+
+main();
